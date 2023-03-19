@@ -1,0 +1,171 @@
+.contact {
+  &__wrapper {
+    width: 100%;
+    padding: 65px 0 174px;
+    background-image: url('../../../../assets/images/contact-us.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    @include flex-center;
+    @include flex-direction(column);
+
+    @include responsive-max($ipadLandscape) { padding: 80px 3% 174px; }
+  }
+
+  &__title { color: $white; }
+
+  &__para {
+    width: 75%;
+    margin: 22px 0 71px;
+    color: $white;
+    font-size: 19px;
+    text-align: center;
+    word-spacing: 2px;
+
+    @include responsive-max($ipadLandscape) {
+      width: 100%;
+      margin: 22px 0 50px;
+      font-size: 16px;
+    }
+  }
+
+  &__main {
+    width: 75%;
+    gap: 62px;
+    @include flex-center(flex-start, space-between);
+
+    @include responsive-max($ipadLandscape) {
+      width: 100%;
+      gap: 30px;
+    }
+    
+    @include responsive-max($miniIpad) {
+      gap: 70px;
+      @include flex-wrap(wrap);
+    }
+  }
+
+  &__form,
+  &__details {
+    @include flex-basis(50%);
+    
+    @include responsive-max($miniIpad) {
+      @include flex(1,0,100%);
+    }
+  }
+
+  &__form {
+    gap: 20px;
+    @include flex-center(flex-start, flex-start);
+    @include flex-direction(column);
+
+    &--group {
+      width: 100%;
+
+      >* {
+        width: 93%;
+        padding: 11px 20px;
+        border: 1px solid $white;
+        border-radius: 5px;
+        background-color: transparent;
+        color: $white;
+        font-size: 19px;
+
+        @include responsive-max($ipadLandscape) {
+          width: 100%;
+          font-size: 16px;
+        }
+
+        &::placeholder {
+          color: $white;
+          text-transform: capitalize;
+        }
+      }
+
+      textarea {
+        min-height: 260px;
+        resize: vertical;
+
+        @include responsive-max($miniIpad) { min-height: 200px; }
+
+        &::-webkit-resizer {
+          border: 9px solid transparent;
+          border-right-color: $white;
+          border-bottom-color: $white;
+          border-radius: 3px;
+        }
+      }
+    }
+
+    &--control {
+      width: 100%;
+
+      @include responsive-max($miniIpad) { text-align: center; }
+
+      input {
+        width: 51.7%;
+        padding: 11px 30px;
+        border: none;
+        border-radius: 3px;
+        background-color: $blueMid;
+        color: $white;
+        font-size: 18px;
+        text-transform: capitalize;
+        @include transition;
+
+        @include responsive-min($ipadLandscape) {
+          &:hover {
+            background-color: $white;
+            color: $blueLight;
+          }
+        }
+      }
+    }
+  }
+
+  &__details {
+    gap: 50px;
+    @include flex-center(flex-start, flex-start);
+    @include flex-direction(column);
+
+    @include responsive-max($miniIpad) {
+      gap: 30px;
+      @include align-items(center);
+    }
+    
+    a {
+      color: $white;
+      font-size: 19px;
+      text-transform: capitalize;
+
+      @include responsive-min($ipadLandscape) {
+        &:hover {
+          color: $black;
+          text-shadow: 0 0 5px $white;
+        }
+      }
+
+      @include responsive-max($ipadLandscape) { font-size: 17px; }
+
+      &::before {
+        margin-right: 28px;
+        font-size: 36px;
+        font-family: "fontAwesome";
+        font-weight: 600;
+      }
+    }
+
+    li:nth-child(2) {
+      a { text-transform: lowercase; }
+    } 
+
+    @each $key, $value in $contactIcon {
+      li {
+        &:nth-child(#{$key}) {
+          a {
+            &::before { content: "#{$value}"; }
+          }
+        }
+      }
+    } 
+  }
+}

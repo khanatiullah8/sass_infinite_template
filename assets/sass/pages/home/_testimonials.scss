@@ -1,0 +1,108 @@
+.testimonials {
+  &__wrapper {
+    width: 100%;
+    padding: 97px 0 164px;
+    background-image: url('../../../../assets/images/bg-testimonials.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    @include flex-center;
+    @include flex-direction(column);
+
+    @include responsive-max($ipadLandscape) { padding: 80px 3%; }
+  }
+
+  &__title { color: $white; }
+
+  &__para {
+    width: 50%;
+    margin: 22px 0 83px;
+    color: $white;
+    font-size: 14px;
+    text-align: center;
+
+    @include responsive-max($ipadLandscape) {
+      width: 100%;
+      margin: 22px 0 50px;
+    }
+  }
+
+  &__lists {
+    width: 71.3%;
+    color: $white;
+    gap: 58px;
+    @include flex-center(flex-start, center);
+    @include responsive-max($ipadLandscape) { width: 100%; }
+    
+    @include responsive-max($miniIpad) {
+      gap: 30px;
+
+      li:last-child { display: none; }
+    }
+
+    @include responsive-max($iphone) {
+      li:not(:first-child) { display: none; }
+    }
+
+  }
+  
+
+  &__figure {
+    width: 127px;
+    height: 127px;
+    border-radius: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    @include flex-shrink(0);
+  }
+
+  &__comment {
+    padding: 0 10px 0 0;
+    margin: 35px 0 17px;
+    line-height: 1.65;
+    font-size: 17px;
+
+    @include responsive-max($ipadLandscape) {
+      padding: 0;
+      font-size: 16px;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: 18px;
+    font-style: italic;
+    text-align: right;
+    text-transform: capitalize;
+
+    @include responsive-max($ipadLandscape) { font-size: 16px; }
+  }
+
+  &__controls {
+    margin-top: 63px;
+    position: relative;
+    right: 3px;
+    gap: 30px;
+    @include flex-center;
+
+    @include responsive-max($ipadLandscape) {
+      margin-top: 50px;
+      right: 0;
+    }
+
+    li {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: $greyLight;
+      cursor: pointer;
+      text-indent: -99999px;
+      @include transition;
+
+      &:first-child { background-color: $white; }
+      
+      @include responsive-min($ipadLandscape) {
+        &:hover { background-color: $white; }
+      }
+    }
+  }
+}

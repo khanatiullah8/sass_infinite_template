@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  @include box-sizing;
+  padding: 0;
+  margin: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: sans-serif;
+  @include box-sizing;
+}
+
+span { display: inline-block; }
+p { line-height: 2; }
+p::first-letter { text-transform: uppercase; }
+
+input[type],
+textarea,
+button {
+  outline: none;
+}
+
+a { 
+  display: inline-block;
+  text-decoration: none; 
+  @include transition;
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.section-title {
+  color: $blueLight;
+  font-size: 43px;
+  text-transform: capitalize;
+
+  @include responsive-max($ipadLandscape) {
+    font-size: 36px;
+  }
+}
+
+.section-para {
+  color: $greyMid;
+  font-size: 18px;
+  word-spacing: 3px;
+
+  @include responsive-max($ipadLandscape) {
+    font-size: 16px;
+  }
+}
+
+.button {
+  padding: 14px 30px;
+  background-color: $blueMid;
+  color: $white;
+  font-size: 19px;
+  text-transform: capitalize;
+
+  @include responsive-max($ipadLandscape) {
+    font-size: 17px;
+  }
+
+  @include responsive-min($ipadLandscape) {
+    &:hover {
+      background-color: $white;
+      color: $blueLight;
+      @include box-shadow(inset 0 0 0 3px $blueLight);
+    }
+  }
+}
+
+/*for wrapper*/
+.wrapper {
+  max-width: 1366px;
+  width: 91.2%; 
+  margin: 0 auto;
+}

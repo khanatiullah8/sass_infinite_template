@@ -1,0 +1,26 @@
+.container { position: relative; }
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 23px;
+  
+  &__wrapper { position: relative; }
+
+  p {
+    color: $white;
+    font-size: 15px;
+    text-align: center;
+    text-transform: capitalize;
+    word-spacing: 2px;
+  }
+  
+  a {
+    color: $white;
+    text-transform: uppercase;
+
+    @include responsive-min($ipadLandscape) {
+      &:hover { text-decoration: underline; }
+    }
+  }
+}

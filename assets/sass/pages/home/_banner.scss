@@ -1,0 +1,92 @@
+.banner {
+  &__wrapper {
+    width: 100%;
+    height: 117vh;
+    overflow: hidden;
+    position: relative;
+    @include flex-center;
+
+    @include responsive-max($miniIpad) { height: 100vh; }
+  }
+
+  &__figure {
+    width: 100%;
+    height: 100%;
+
+    img {
+      height: 100%;
+      @include object;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    padding: 0 10px;
+    color: $white;
+    text-align: center;
+    text-transform: capitalize;
+    @include position(absolute, top, 43.1%, left, 49.4%);
+    @include transform(translate(-50%, -50%));
+  }
+
+  &__title {
+    margin-bottom: 11px;
+    font-size: 58px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px $black;
+
+    @include responsive-max($ipadLandscape) { font-size: 42px; }
+    @include responsive-max($iphone) { font-size: 36px; }
+  }
+
+  &__para {
+    margin: 8px 0;
+    font-size: 20px;
+    line-height: 1.5;
+
+    @include responsive-max($ipadLandscape) { font-size: 18px; }
+    @include responsive-max($iphone) { font-size: 16px; }
+  }
+
+  &__indicator {
+    @include position(absolute, bottom, 97px, left, 45.3%);
+    
+    @include responsive-max($ipadLandscape) {
+      left: 50%;
+      @include transform(translateX(-50%));
+    }
+
+    @include responsive-max($miniIpad) { bottom: 60px; }
+
+    span {
+      padding: 11px 56px;
+      position: relative;
+      background-color: $blueDark;
+      color: $white;
+      cursor: pointer;
+      font-size: 42px;
+      text-indent: -99999px;
+
+      &::before {
+        @include fontAwesome($arrowDown);
+        @include transition;
+      }
+
+      @include responsive-min($ipadLandscape) {
+        &:hover::before {
+          @include animation(indicate .3s linear);
+          @include keyframes(indicate) {
+            0%, 100% { top: 50%; }
+            40% { top: 40%; }
+            70% { top: 60%; }
+          }
+        }
+      }
+
+      @include responsive-max($miniIpad) {
+        padding: 11px 40px;
+        font-size: 32px;
+      }
+    }
+  }
+}

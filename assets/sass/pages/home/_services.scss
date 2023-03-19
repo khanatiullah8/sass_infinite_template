@@ -1,0 +1,121 @@
+.services {
+  &__wrapper {
+    padding: 97px 0 101px;
+    @include flex-center(flex-start, center);
+    @include flex-direction(column);
+
+    @include responsive-max($ipadLandscape) {
+      width: 100%;
+      padding: 80px 3%;
+    }
+
+    @include responsive-max($miniIpad) {
+      text-align: center;
+
+      > * { width: 100%; }
+    }
+    
+    .section-para {
+      padding: 0 15px 0 0;
+      margin: 24px 0 81px;
+
+      @include responsive-max($ipadLandscape) { margin: 24px 0 40px; }
+      
+      a {
+        color: $blueLight;
+
+        @include responsive-min($ipadLandscape) {
+          &:hover { text-decoration: underline; }
+        }
+      }
+
+      span {
+        color: $greyDark;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__lists {
+    gap: 10px;
+    @include flex-center(flex-start, space-between);
+    @include flex-wrap(wrap);
+    @include responsive-max($miniIpad) { gap: 0; }
+
+    &--item {
+      gap: 28px;
+      @include flex-center(flex-start, center);
+      @include flex-basis(49.3%);
+      
+      @include responsive-max($ipadLandscape) { gap: 10px; }
+      
+      @include responsive-max($miniIpad) {
+        padding: 30px 0;
+        border-bottom: 1px solid $blueLight;
+        @include align-items(center);
+        @include flex(1, 0, 100%);
+        @include flex-direction(column);
+
+        &:last-child { border-bottom: none; }
+      }
+
+      .services__logo {
+        width: 75px;
+        height: 53px;
+        position: relative;
+        color: $blueLight;
+        font-size: 49px;
+        text-indent: -99999px;
+        @include flex-shrink(0);
+
+        @include responsive-max($ipad) {
+          width: 65px;
+          font-size: 40px;
+        }
+      }
+
+      @each $key, $value in $servicesIcon {
+        &:nth-child(#{$key}) {
+          .services__logo {
+            &::before {
+              @include fontAwesome(#{$value});
+            }
+          }
+        }
+      } 
+
+      h4 {
+        color: $blueLight;
+        font-size: 33px;
+        text-transform: capitalize;
+
+        @include responsive-max($ipadLandscape) {
+          font-size: 28px;
+        }
+      }
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        p {
+          margin: 24px 0 70px;
+        
+          @include responsive-max($ipadLandscape) { margin: 24px 0 30px; }
+        }
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        p { margin: 24px 0 30px; }
+      }
+
+      &:nth-child(4) {
+        span { font-style: italic; }
+        
+        .example {
+          color: $greyMid;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+.header {
+  width: 100%;
+  position: absolute;
+
+  @include responsive-max($miniIpad) {
+    z-index: 3;
+    background-color: $blueMid;
+    @include position(sticky,top,0,left,0);
+    @include box-shadow(0 2px 7px $black);
+  }
+
+  &__wrapper {
+    padding: 15px 0;
+    position: relative;
+    z-index: 2;
+    @include flex-center(center, space-between);
+
+    @include responsive-max($ipadLandscape) {
+      width: 100%;
+      padding: 15px 3%;
+    }
+  }
+
+  &__hamburger {  
+    width: 30px;
+    height: 30px;
+    border: 2px solid $white;
+    border-radius: 3px;
+    display: none;
+    overflow: hidden;
+    position: relative;
+    z-index: 4;
+    cursor: pointer;
+
+    @include responsive-max($miniIpad) { display: block; }
+    
+    &--bar {
+      width: 17px;
+      height: 2px;
+      border-radius: 3px;
+      background-color: $white;
+      @include position(absolute, top, 50%, left, 50%);
+      @include transform(translate(-50%, -50%));
+      @include transition;
+      text-indent: -99999px;
+  
+      &::before,
+      &::after {
+        content: '';
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        position: absolute;
+        left: 0;
+        background-color: inherit;
+        @include transition;
+      }
+      
+      &::before { top: -6px; }
+      &::after { top: 6px; }
+    }
+
+    &:hover {
+      .header__hamburger--bar {
+        @include transform(translate(-50%, -50%) rotate(-225deg));
+       
+        &::before { display: none; }
+        
+        &::after {
+          top: 0;
+          @include transform(rotate(-90deg));
+        }
+      }
+    } 
+  }
+
+  &__nav {
+    @include responsive-max($miniIpad) {
+      width: 100%;
+      height: 100vh;
+      z-index: 3;
+      background-color: $blueDark;
+      @include position(fixed,top,0,left,-101%);
+      @include transition;
+
+      .header__hamburger:hover ~ & { left: 0; }
+    }
+
+    &--menu {
+      margin-right: 45px;
+      gap: 60px;
+      @include flex-center;
+
+      @include responsive-max($ipadLandscape) {
+        margin-right: 0;
+        gap: 30px;
+      }
+
+      @include responsive-max($miniIpad) {
+        width: 100%;
+        height: 100%;
+        @include flex-direction(column);
+      }
+      
+      a {
+        padding: 3px 0;
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        color: $white;
+        font-size: 20px;
+        text-transform: capitalize;
+        
+        @include responsive-min($ipadLandscape) {
+          &:hover { border-color: $white; }
+        }
+
+        @include responsive-max($ipadLandscape) {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
